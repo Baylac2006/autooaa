@@ -1,15 +1,17 @@
-local HttpService = game:GetService("HttpService")
+import base64
 
--- Base64 Script đã mã hóa
-local encodedScript = "local KeyGuardLibrary = loadstring(game:HttpGet(\"https://cdn.keyguardian.org/library/v1.0.0.lua\"))()\nlocal trueData = \"0baaee781831405da39f2f7158fe6b29\"\nlocal falseData = \"bcebbb4e8fb049998cd57634d0015d2d\"\n\nKeyGuardLibrary.Set({\n    publicToken = \"73298d4225c243a9b08431a8d83f8a8f\",\n    privateToken = \"2b0d4d9907e8413ba2abd5a8862c26b6\",\n    trueData = trueData,\n    falseData = falseData,\n})\n\nlocal Fluent = loadstring(game:HttpGet(\"https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua\"))()\nlocal key = \"\"\n\n-- Tên file để lưu key\nlocal fileName = \"KeyStorage.txt\"\n\n-- Hàm lưu key vào file\nlocal function saveKeyToFile(key)\n    writefile(fileName, key)\n    print(\"Key đã được lưu.\")\nend\n\n-- Hàm load key từ file\nlocal function loadKeyFromFile()\n    if isfile(fileName) then\n        return readfile(fileName)\n    else\n        print(\"Chưa có key nào được lưu.\")\n        return nil\n    end\nend\n\n-- Hàm kiểm tra key\nlocal function validateKey()\n    if key and key ~= \"\" then\n        local response = KeyGuardLibrary.validateDefaultKey(key)\n        if response == trueData then\n            print(\"Key hợp lệ! Tải script chính...\")\n            loadstring(game:HttpGet(\"https://raw.githubusercontent.com/skyemngu12/Anime-last-stand/refs/heads/main/Guihlw\"))()\n            return true\n        else\n            print(\"Key không hợp lệ.\")\n            return false\n        end\n    else\n        print(\"Không tìm thấy key để kiểm tra.\")\n        return false\n    end\nend\n\n-- Tự động load key từ file nếu tồn tại\nkey = loadKeyFromFile() or \"\"\n\nlocal isKeyValid = validateKey() -- Kiểm tra key ngay khi script được tải\n\n-- Tạo giao diện\nif not isKeyValid then\n    local Window = Fluent:CreateWindow({\n        Title = \"Lấy key đi mày!\",\n        SubTitle = \"Pịa Xào Tỏi Húp\",\n        TabWidth = 160,\n        Size = UDim2.fromOffset(580, 340),\n        Acrylic = false,\n        Theme = \"Dark\",\n        MinimizeKey = Enum.KeyCode.LeftControl\n    })\n\n    local Tabs = {\n        KeySys = Window:AddTab({ Title = \"Lấy Pịa\", Icon = \"key\" }),\n    }\n\n    local Entkey = Tabs.KeySys:AddInput(\"Input\", {\n        Title = \"Nhập key\",\n        Description = \"Nhấn vô đây để nhập key\",\n        Default = key, -- Hiển thị key đã lưu (nếu có) để chỉnh sửa\n        Placeholder = \"Enter key…\",\n        Numeric = false,\n        Finished = false,\n        Callback = function(Value)\n            key = Value\n        end\n    })\n\n    local Checkkey = Tabs.KeySys:AddButton({\n        Title = \"Kiểm tra key\",\n        Description = \"Nhấn vô để check key\",\n        Callback = function()\n            local response = KeyGuardLibrary.validateDefaultKey(key)\n            if response == trueData then\n                print(\"Key đúng!\")\n                saveKeyToFile(key) -- Lưu key vào file nếu đúng\n                Window:Destroy() -- Đóng giao diện khi key hợp lệ\n                loadstring(game:HttpGet(\"https://raw.githubusercontent.com/skyemngu12/Anime-last-stand/refs/heads/main/Guihlw\"))()\n            else\n                print(\"Key sai rồi má!\")\n            end\n        end\n    })\n\n    local Getkey = Tabs.KeySys:AddButton({\n        Title = \"Lấy key\",\n        Description = \"Ấn vô đây lấy key\",\n        Callback = function()\n            setclipboard(KeyGuardLibrary.getLink())\n            print(\"Link lấy key đã được sao chép vào clipboard.\")\n        end\n    })\n\n    Window:SelectTab(1)\nend\n  - " -- Thay đoạn này bằng Base64 đã mã hóa
+# Dữ liệu mã hóa Base64
+encoded_data = "t򖆝mq{(.jbjz+bnInjZj[kڵi|^4ַ^|}hq_j[
+ZmǛm}ywM5ݝ)솹.&jznnXNxn\ۍ<}Z7Ƽ~⽫^Nfw}NwmmZζsnx6jx6iڵږǃj֥ƥ[hi-)ial"ru"w*meyZ-0ZwynjZjYz[{)hq_Wjg{$zmWƥ~ܶ*')쓠XzG¸yyx֦zGr[߾ihihq_w-塧J{!kab蟊Zazz޶~)^~)^5z[(ZrG%Wu)ZjWb{ږ'Z'{&vGxtbu^
+ں[J{)'zhǭj֭))졦T!hi-)ialܢ{^($駂v	j~֧w~ylfpn{k祱k{J{)!ij[zw^ǩ)*kaG)޶}lyzw~9~)^g)Zt&)^hqbUbv֭x⢚ڑ직+*mrؾ: xbUbv^ZjU0[Ыy^Z)ݣWGlWizzSivuDm}4ߍ�rږǓ
+2),)섞{ u~ШZjTn,Z)ݣ�u6N+exh(GIi
+{$]"znW7r*'6xiy{a쥺{rᱣiǡW^Izۦz}lxX^uVrGbuZ{%Z瞝hqB$i
+{$]mtWkkjG
+*m͆{܅$jY[iw-ƥ){)솹.&jjXj׃yҞG޲'kڵazzk{J{)౫)쓠XzG쯡z{hvzk/"jbHb졦Yhi-)ialܢ{^($駂v	j~֧w~ylfpz[guݖgi
+{$]mtWG
+*m)rjY[iw-z%jJ{!jKگ(Ir윱rXnuZ)ݣ-Mzw"
 
--- Giải mã Base64
-local function decodeBase64(encoded)
-    return HttpService:JSONDecode('["' .. encoded .. '"]')[1]
-end
+# Giải mã Base64
+decoded_data = base64.b64decode(encoded_data).decode('utf-8')
 
-local decodedScript = decodeBase64(encodedScript)
-print("Script sau khi giải mã:", decodedScript)
-
--- Chạy script đã giải mã
-loadstring(decodedScript)()
+print("Dữ liệu gốc:", decoded_data)
